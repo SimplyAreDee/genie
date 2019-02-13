@@ -1,15 +1,25 @@
 package click.acme.genius.Controllers.Activities;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import click.acme.genius.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.main_activity_ask_help_btn) Button mAskHelpBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getFragmentLayout() {
+        return R.layout.activity_main;
+    }
+
+    @OnClick(R.id.main_activity_ask_help_btn)
+    void OnClickAskHelpButton(View view){
+        Intent intent = new Intent(MainActivity.this, AskUsActivity.class);
+        startActivity(intent);
     }
 }

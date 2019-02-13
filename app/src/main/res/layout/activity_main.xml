@@ -19,7 +19,7 @@
 
 
        <Button
-           android:id="@+id/menu_1"
+           android:id="@+id/main_activity_give_help_btn"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="@string/apporter_de_l_aide"
@@ -33,7 +33,7 @@
            android:layout_weight="50"/>
 
         <Button
-            android:id="@+id/menu_2"
+            android:id="@+id/main_activity_ask_help_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/trouver_de_l_aide"
@@ -47,7 +47,7 @@
             android:layout_weight="50"/>
 
         <Button
-            android:id="@+id/menu_3"
+            android:id="@+id/main_activity_discuss_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/discuter"
@@ -61,7 +61,7 @@
             android:layout_weight="50"/>
 
         <Button
-            android:id="@+id/menu_4"
+            android:id="@+id/main_activity_profile_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mon_profil"
