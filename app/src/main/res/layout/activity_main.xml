@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controllers.Activities.MainActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_screen" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+       <Button
+           android:id="@+id/menu_1"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/apporter_de_l_aide"
+           android:padding="10sp"
+           android:textSize="25sp"
+           android:textAlignment="center"
+           android:gravity="center"
+           android:background="@android:color/transparent"
+           android:textColor="@android:color/white"
+           android:drawableStart="@drawable/outline_people_white_18dp"
+           android:layout_weight="50"/>
+
+        <Button
+            android:id="@+id/menu_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/trouver_de_l_aide"
+            android:padding="10sp"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:drawableStart="@drawable/outline_live_help_white_18dp"
+            android:layout_weight="50"/>
+
+        <Button
+            android:id="@+id/menu_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/discuter"
+            android:padding="10sp"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:drawableStart="@drawable/outline_headset_mic_white_18dp"
+            android:layout_weight="50"/>
+
+        <Button
+            android:id="@+id/menu_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mon_profil"
+            android:padding="10sp"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:drawableStart="@drawable/outline_school_white_18dp"
+            android:layout_weight="50"/>
+    </LinearLayout>
+
+</FrameLayout>

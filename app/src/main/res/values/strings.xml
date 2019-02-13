@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Genius</string>
+    <string name="apporter_de_l_aide">Apporter de l\'aide</string>
+    <string name="trouver_de_l_aide">Trouver de l\'aide</string>
+    <string name="discuter">Discuter avec la communauté</string>
+    <string name="mon_profil">Mon profil</string>
+    <string name="genius">Genius</string>
+    <string name="slogan">SHAZAM! tes devoirs</string>
+    <string name="no_conn_error">Cette application a besoin d\'une connexion internet pour fonctionner</string>
+</resources>

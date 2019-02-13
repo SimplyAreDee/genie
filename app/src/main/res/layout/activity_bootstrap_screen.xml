@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controllers.Activities.BootstrapActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="90">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="40sp"
+            android:padding="10dp"
+            android:text="@string/genius"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textFontWeight="bold"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="40sp"
+            android:padding="10dp"
+            android:text="@string/slogan"
+            android:textColor="@android:color/darker_gray"
+            android:textAlignment="center" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/bootstrap_activity_refresh_connectivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:layout_weight="10"
+        android:text="Réessayer"
+        android:drawableStart="@drawable/outline_refresh_white_18dp"
+        android:layout_marginBottom="20sp"/>
+    </LinearLayout>
+</FrameLayout>
