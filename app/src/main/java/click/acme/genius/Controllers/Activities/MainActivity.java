@@ -17,6 +17,10 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected void postCreateTreatment() {
+    }
+
     @OnClick(R.id.main_activity_ask_help_btn)
     void OnClickAskHelpButton(View view){
         Intent intent = new Intent(MainActivity.this, AskUsActivity.class);

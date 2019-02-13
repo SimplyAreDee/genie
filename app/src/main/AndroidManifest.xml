@@ -2,9 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="click.acme.genius">
 
+    <meta-data
+        android:name="com.google.android.gms.vision.DEPENDENCIES"
+        android:value="barcode" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +22,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Controllers.Activities.ScanActivity"
+            android:label="@string/title_activity_scan"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Controllers.Activities.AskUsActivity"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".Controllers.Activities.BootstrapActivity"
             android:theme="@style/SplashTheme">
@@ -21,7 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controllers.Activities.MainActivity"></activity>
+        <activity android:name=".Controllers.Activities.MainActivity" />
     </application>
 
 </manifest>

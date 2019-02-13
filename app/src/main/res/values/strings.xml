@@ -15,4 +15,23 @@
     <string name="error_unknown_error">Une erreur inconnue s\'est produite&#8230;</string>
     <string name="connection_succeed">Authentification réussie !</string>
     <string name="connexion">connexion</string>
+    <string-array name="subject_array">
+        <item>Français</item>
+        <item>Mathématiques</item>
+        <item>Anglais</item>
+        <item>Histoire</item>
+        <item>Géographie</item>
+        <item>Education Civique</item>
+        <item>S.V.T</item>
+        <item>Technologie</item>
+        <item>Education Musicale</item>
+        <item>Arts Plastiques</item>
+        <item>E.P.S</item>
+        <item>Italien</item>
+        <item>Espagnol</item>
+        <item>Philosophie</item>
+        <item>Autres langues</item>
+    </string-array>
+    <string name="title_activity_scan">ScanActivity</string>
+    <string name="popup_title_permission_camera_access">Pour pouvoir scanner le code barre, il faut autorisé l\'accès à l\'appareil photo.</string>
 </resources>

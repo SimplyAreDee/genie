@@ -37,6 +37,10 @@ public class BootstrapActivity extends BaseActivity {
     }
 
     @Override
+    protected void postCreateTreatment() {
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
