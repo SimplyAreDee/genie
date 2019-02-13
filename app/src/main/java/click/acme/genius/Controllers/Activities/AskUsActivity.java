@@ -6,8 +6,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -15,7 +23,7 @@ import click.acme.genius.R;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
+public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, Validator.ValidationListener {
 
     private String mSubjectSelected = "";
 
@@ -25,10 +33,25 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
     @BindView(R.id.activity_ask_help_reference_scan_btn)
     Button mReferenceScanBtn;
-    @BindView(R.id.activity_ask_help_reference_textview)
-    TextView mReferenceTextView;
     @BindView(R.id.activity_ask_help_matiere_spinner)
     Spinner mMatiereSpinner;
+    @BindView(R.id.activity_ask_envoyer_btn)
+    Button mSendDataBtn;
+
+    @NotEmpty
+    @BindView(R.id.activity_ask_help_reference_edittext)
+    EditText mReferenceEditText;
+    @NotEmpty
+    @BindView(R.id.activity_ask_help_page_edittext)
+    EditText mPageEditText;
+    @NotEmpty
+    @BindView(R.id.activity_ask_help_number_edittext)
+    EditText mNumberEditText;
+    @NotEmpty
+    @BindView(R.id.activity_ask_help_consign_edittext)
+    EditText mConsignEditText;
+    private Validator validator;
+
 
     @Override
     protected int getFragmentLayout() {
@@ -37,7 +60,13 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
     @Override
     protected void postCreateTreatment() {
+        configureFormValidator();
         configureMatiereSpinner();
+    }
+
+    private void configureFormValidator() {
+        validator = new Validator(this);
+        validator.setValidationListener(this);
     }
 
     @Override
@@ -51,6 +80,11 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
     @OnClick(R.id.activity_ask_help_reference_scan_btn)
     void OnClickReferenceScanBtn(View view) {
         showScanActivity();
+    }
+
+    @OnClick(R.id.activity_ask_envoyer_btn)
+    void OnClickSendDataBtn(View view) {
+        validator.validate();
     }
 
     private void showScanActivity() {
@@ -85,7 +119,27 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
         if (requestCode == RC_CAMERA_TAKEN) {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("barcode");
-                mReferenceTextView.setText(result);
+                mReferenceEditText.setText(result);
+            }
+        }
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        Toast.makeText(this, "SHAZAM!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+
+            // Display error messages ;)
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
         }
     }

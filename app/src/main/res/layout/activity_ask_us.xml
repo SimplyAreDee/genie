@@ -40,7 +40,7 @@
             android:stretchColumns="1">
 
             <EditText
-                android:id="@+id/activity_ask_help_reference_textview"
+                android:id="@+id/activity_ask_help_reference_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
@@ -68,6 +68,7 @@
             android:stretchColumns="1">
 
             <EditText
+                android:id="@+id/activity_ask_help_page_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
@@ -75,6 +76,7 @@
                 android:inputType="number" />
 
             <EditText
+                android:id="@+id/activity_ask_help_number_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
@@ -90,6 +92,7 @@
         android:layout_weight="50">
 
         <EditText
+            android:id="@+id/activity_ask_help_consign_edittext"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Consigne"
