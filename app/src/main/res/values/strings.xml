@@ -34,4 +34,8 @@
     </string-array>
     <string name="title_activity_scan">ScanActivity</string>
     <string name="popup_title_permission_camera_access">Pour pouvoir scanner le code barre, il faut autorisé l\'accès à l\'appareil photo.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notification_zone">notification_zone</string>
 </resources>

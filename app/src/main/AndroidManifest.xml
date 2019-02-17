@@ -13,7 +13,6 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -22,10 +21,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Controllers.Activities.LobbyActivity"></activity>
+        <activity
+            android:name=".Controllers.Activities.SearchActivity"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".Controllers.Activities.ListActivity"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".Controllers.Activities.ScanActivity"
             android:label="@string/title_activity_scan"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Controllers.Activities.AskUsActivity"
             android:theme="@style/SplashTheme" />

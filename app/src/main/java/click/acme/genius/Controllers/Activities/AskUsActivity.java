@@ -8,9 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
@@ -33,8 +31,8 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
     @BindView(R.id.activity_ask_help_reference_scan_btn)
     Button mReferenceScanBtn;
-    @BindView(R.id.activity_ask_help_matiere_spinner)
-    Spinner mMatiereSpinner;
+    @BindView(R.id.activity_ask_help_subject_spinner)
+    Spinner mSubjectSpinner;
     @BindView(R.id.activity_ask_envoyer_btn)
     Button mSendDataBtn;
 
@@ -48,8 +46,8 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
     @BindView(R.id.activity_ask_help_number_edittext)
     EditText mNumberEditText;
     @NotEmpty
-    @BindView(R.id.activity_ask_help_consign_edittext)
-    EditText mConsignEditText;
+    @BindView(R.id.activity_ask_help_instruction_edittext)
+    EditText mInstructionEditText;
     private Validator validator;
 
 
@@ -100,7 +98,7 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.subject_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mMatiereSpinner.setAdapter(adapter);
+        mSubjectSpinner.setAdapter(adapter);
     }
 
     @Override
@@ -134,7 +132,6 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
         for (ValidationError error : errors) {
             View view = error.getView();
             String message = error.getCollatedErrorMessage(this);
-
             // Display error messages ;)
             if (view instanceof EditText) {
                 ((EditText) view).setError(message);

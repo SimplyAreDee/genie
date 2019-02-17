@@ -26,4 +26,16 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(MainActivity.this, AskUsActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.main_activity_give_help_btn)
+    void OnClickGiveHelpButton(View view) {
+        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.main_activity_discuss_btn)
+    void OnClickDiscussButton(View view) {
+        Intent intent = new Intent(MainActivity.this, LobbyActivity.class);
+        startActivity(intent);
+    }
 }
