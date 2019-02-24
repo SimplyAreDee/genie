@@ -3,6 +3,13 @@ package click.acme.genius.Adapters;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.RequestManager;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.util.Listener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +19,17 @@ import click.acme.genius.Models.Question;
 import click.acme.genius.R;
 import click.acme.genius.Views.QuestionListItemViewHolder;
 
-public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListItemViewHolder> {
+public class QuestionListAdapter  extends FirestoreRecyclerAdapter<Question, QuestionListItemViewHolder> {
 
-    private ArrayList<Question> mDataSet;
+    public interface Listener {
+        void onDataChanged();
+    }
 
-    public QuestionListAdapter(ArrayList<Question> questions) {
-        mDataSet = questions;
+    private Listener callback;
+
+    public QuestionListAdapter(@NonNull FirestoreRecyclerOptions<Question> options, Listener callback) {
+        super(options);
+        this.callback = callback;
     }
 
     @NonNull
@@ -28,12 +40,13 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListItemVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuestionListItemViewHolder holder, int position) {
-        holder.updateWithData(mDataSet.get(position));
+    protected void onBindViewHolder(@NonNull QuestionListItemViewHolder holder, int position, @NonNull Question model) {
+        holder.updateWithData(model);
     }
 
     @Override
-    public int getItemCount() {
-        return mDataSet.size();
+    public void onDataChanged() {
+        super.onDataChanged();
+        this.callback.onDataChanged();
     }
 }

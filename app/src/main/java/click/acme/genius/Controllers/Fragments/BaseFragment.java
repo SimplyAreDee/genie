@@ -19,6 +19,7 @@ import icepick.Icepick;
  */
 public abstract class BaseFragment extends Fragment {
 
+    protected Bundle mBundle;
     // 1 - Force developer implement those methods
     protected abstract BaseFragment newInstance();
 
@@ -35,12 +36,15 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // 2 - Get layout identifier from abstract method
+
         View view = inflater.inflate(getFragmentLayout(), container, false);
-        // 3 - Binding Views
+
         ButterKnife.bind(this, view);
-        // 4 - Configure Design (Developer will call this method instead of override onCreateView())
+
+        mBundle = savedInstanceState;
+
         this.configureDesign();
+
         return (view);
     }
 

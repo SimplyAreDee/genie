@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import click.acme.genius.Controllers.Fragments.ListFragment;
+import click.acme.genius.Controllers.Fragments.QuestionDetailFragment;
 import click.acme.genius.Controllers.Fragments.SearchFragment;
 import click.acme.genius.R;
 
@@ -80,6 +81,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
             if (fragmentId == R.id.activity_search_frame_layout) {
                 fragment = new SearchFragment();
+            }
+            if(fragmentId == R.id.activity_question_detail_frame_layout){
+                fragment = new QuestionDetailFragment();
             }
             if (fragment != null) {
                 getSupportFragmentManager().beginTransaction()

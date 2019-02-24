@@ -1,7 +1,6 @@
 package click.acme.genius.Controllers.Activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class BootstrapActivity extends BaseActivity {
 
     @BindView(R.id.bootstrap_activity_refresh_btn) Button mRetryConnectivityButton;
     @BindView(R.id.bootstrap_activity_login_btn) Button mConnexionButton;
-    @BindView(R.id.bootstrap_activity_coordinator_layout) CoordinatorLayout coordinatorLayout;
+    @BindView(R.id.bootstrap_activity_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
 
     @Override
     protected int getFragmentLayout() {
@@ -38,12 +37,6 @@ public class BootstrapActivity extends BaseActivity {
 
     @Override
     protected void postCreateTreatment() {
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         mRetryConnectivityButton.setVisibility(View.INVISIBLE);
         mConnexionButton.setVisibility(View.INVISIBLE);
         checkConnectivity();
@@ -134,15 +127,15 @@ public class BootstrapActivity extends BaseActivity {
 
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) { // SUCCESS
-                showSnackBar(this.coordinatorLayout, getString(R.string.connection_succeed));
+                showSnackBar(this.mCoordinatorLayout, getString(R.string.connection_succeed));
                 startNextActivity();
             } else { // ERRORS
                 if (response == null) {
-                    showSnackBar(this.coordinatorLayout, getString(R.string.error_authentication_canceled));
+                    showSnackBar(this.mCoordinatorLayout, getString(R.string.error_authentication_canceled));
                 } else if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
-                    showSnackBar(this.coordinatorLayout, getString(R.string.error_no_internet));
+                    showSnackBar(this.mCoordinatorLayout, getString(R.string.error_no_internet));
                 } else if (response.getError().getErrorCode() == ErrorCodes.UNKNOWN_ERROR) {
-                    showSnackBar(this.coordinatorLayout, getString(R.string.error_unknown_error));
+                    showSnackBar(this.mCoordinatorLayout, getString(R.string.error_unknown_error));
                 }
             }
         }

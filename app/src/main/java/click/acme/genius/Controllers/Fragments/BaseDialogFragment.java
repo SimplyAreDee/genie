@@ -2,26 +2,23 @@ package click.acme.genius.Controllers.Fragments;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
-import click.acme.genius.R;
 import icepick.Icepick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseDialogFragment extends DialogFragment {
 
     protected Bundle mBundle;
     // 1 - Force developer implement those methods
-    protected abstract BaseFragment newInstance();
+    protected abstract BaseDialogFragment newInstance();
 
     protected abstract int getFragmentLayout();
 
@@ -29,7 +26,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void updateDesign();
 
-    public BaseFragment() {
+    public BaseDialogFragment() {
         // Required empty public constructor
     }
 

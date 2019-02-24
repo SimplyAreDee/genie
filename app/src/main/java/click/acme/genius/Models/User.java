@@ -10,6 +10,7 @@ public class User {
     private static User sCurrentUser;
 
     private String mId;
+    private String mAvatarUrl;
     private String mUserName;
     private String mUserFirstName;
     private String mUserLastName;
@@ -26,6 +27,7 @@ public class User {
     }
 
     public User(FirebaseUser user){
+        setAvatarUrl(user.getPhotoUrl().toString());
         setUserName(user.getDisplayName());
         setEmailAdress(user.getEmail());
         setId(user.getUid());
@@ -46,6 +48,14 @@ public class User {
 
     public void setId(String id) {
         mId = id;
+    }
+
+    public String getAvatarUrl() {
+        return mAvatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        mAvatarUrl = avatarUrl;
     }
 
     public String getUserName() {
@@ -104,6 +114,8 @@ public class User {
         mAskedCount = asked;
     }
 
+    public void incrementAskedCount() { mAskedCount++; }
+
     public int getAnsweredCount() {
         return mAnsweredCount;
     }
@@ -111,6 +123,8 @@ public class User {
     public void setAnsweredCount(int answered) {
         mAnsweredCount = answered;
     }
+
+    public void incrementAnsweredCount(){ mAnsweredCount++; }
 
     public AccountStatus getAccountStatus() {
         return mAccountStatus;

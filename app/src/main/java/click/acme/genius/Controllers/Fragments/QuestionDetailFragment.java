@@ -1,111 +1,284 @@
 package click.acme.genius.Controllers.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
+import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.MetadataChanges;
+import com.google.firebase.firestore.Query;
+
+import java.util.Locale;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.OnClick;
+import click.acme.genius.Adapters.QuestionDetailAdapter;
+import click.acme.genius.Helpers.AnswerHelper;
+import click.acme.genius.Helpers.QuestionHelper;
+import click.acme.genius.Models.Answer;
+import click.acme.genius.Models.Question;
+import click.acme.genius.Models.User;
 import click.acme.genius.R;
+import click.acme.genius.Views.QuestionListItemViewHolder;
+import icepick.State;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link QuestionDetailFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link QuestionDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class QuestionDetailFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class QuestionDetailFragment extends BaseFragment implements QuestionDetailAdapter.Listener {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Question mQuestion;
+    private QuestionDetailAdapter mQuestionListAdapter;
+    private ListenerRegistration mListenerRegistration;
+    @State
+    public String mAnswerText;
+    @State
+    public boolean isShowingAnswerDialog;
 
-    private OnFragmentInteractionListener mListener;
-
+    @BindView(R.id.fragment_layout_question_detail_progressBar)
+    ProgressBar mProgressBar;
+    @BindView(R.id.fragment_layout_question_detail_recycler_view)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.fragment_layout_question_detail_notification_textview)
+    TextView mNotificationText;
+    @BindView(R.id.fragment_layout_question_detail_action_button)
+    FloatingActionButton mActionButton;
+    //Included question item layout
+    @BindView(R.id.fragment_layout_list_item_title_textview)
+    TextView mItemEntryTitle;
+    @BindView(R.id.fragment_layout_list_item_subject_textview)
+    TextView mItemEntrySubject;
+    @BindView(R.id.fragment_layout_list_item_reference_textview)
+    TextView mItemEntryReference;
+    @BindView(R.id.fragment_layout_list_item_date_textview)
+    TextView mItemEntryDate;
+    @BindView(R.id.fragment_layout_list_item_certifiedAnswer_imageview)
+    ImageView mPlusOneButton;
+    @BindView(R.id.fragment_layout_list_item_communityAnswer_imagevie)
+    ImageView mMinorOneButton;
+    @BindView(R.id.fragment_layout_list_item_questionVote)
+    TextView mQuestionVote;
+    @BindView(R.id.fragment_layout_list_item_answerVote_textview)
+    TextView mAnswerVote;
+    
     public QuestionDetailFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuestionDetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuestionDetailFragment newInstance(String param1, String param2) {
-        QuestionDetailFragment fragment = new QuestionDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    @Override
+    protected BaseFragment newInstance() {
+        return new QuestionDetailFragment();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    protected int getFragmentLayout() {
+        return R.layout.fragment_question_detail;
+    }
+
+    @Override
+    protected void configureDesign() {
+        //Changement pour downvote
+        mMinorOneButton.setImageResource(R.drawable.outline_expand_more_white_18dp);
+
+        mProgressBar.setVisibility(View.VISIBLE);
+
+        String mQuestionReference = getArguments().getString("questionReference");
+
+        getAndDisplayRelatedQuestion(mQuestionReference);
+
+        addClickEventOnImageView();
+    }
+
+    private void addClickEventOnImageView() {
+        mPlusOneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mQuestion != null) {
+                    QuestionHelper.addCreditToQuestion(mQuestion);
+                }
+            }
+        });
+        mMinorOneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mQuestion != null) {
+                    QuestionHelper.addDiscreditToQuestion(mQuestion);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void updateDesign() {
+        if(isShowingAnswerDialog)
+        {
+            showAnswerFragment();
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_detail, container, false);
+    @OnClick(R.id.fragment_layout_question_detail_action_button)
+    public void OnActionButtonClick(){
+        showAnswerFragment();
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    private void getAndDisplayRelatedQuestion(String questionReference){
+        DocumentReference documentReference = QuestionHelper.getQuestionByReference(questionReference);
+        documentReference.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    mQuestion = document.toObject(Question.class);
+                    updateViewWithQuestionData(mQuestion);
+                    configureRecyclerView( mQuestion.getId() );
+                } else {
+                    //INFO ne peut se rencontrer que si la question a été supprimée coté serveur entre temps
+                    mNotificationText.setText(getString(R.string.error_occured));
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                }
+            } else {
+                //TODO Supprimer l'erreur coté client et la faire remonter sur crashanalytics
+                mNotificationText.setText(String.format(Locale.FRANCE,"%d : %s", R.string.error_occured, task.getException()));
+                mProgressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+        mListenerRegistration = documentReference.addSnapshotListener((snapshot, e) -> {
+            if (snapshot != null && snapshot.exists()) {
+                mQuestion = snapshot.toObject(Question.class);
+                updateViewWithQuestionData(mQuestion);
+            }
+        });
+    }
+
+    private void updateViewWithQuestionData(Question question) {
+        if(question != null) {
+            mItemEntryTitle.setText(question.getTitle());
+            mItemEntrySubject.setText(question.getSubject());
+            mItemEntryReference.setText(question.getIban());
+            mItemEntryDate.setText(QuestionListItemViewHolder.getStringValueOfElapsedTimeSince(question.getDateCreated()));
+            mQuestionVote.setText(String.valueOf( question.getWeight() ));
+            AnswerHelper.getAnswersFromDatabase(question.getId()).get().addOnSuccessListener(
+                    queryDocumentSnapshots -> mAnswerVote.setText(String.valueOf( queryDocumentSnapshots.size() ))
+            );
         }
     }
 
+    private void configureRecyclerView(String questionReference) {
+        mQuestionListAdapter = new QuestionDetailAdapter(
+                generateOptionsForAdapter(AnswerHelper.getAnswersFromDatabase(questionReference)),
+                this
+        );
+        mQuestionListAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                mRecyclerView.smoothScrollToPosition(mQuestionListAdapter.getItemCount()); // Scroll to bottom on new messages
+            }
+        });
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(mQuestionListAdapter);
+        mQuestionListAdapter.startListening();
+    }
+
+    private FirestoreRecyclerOptions<Answer> generateOptionsForAdapter(Query query){
+        return new FirestoreRecyclerOptions.Builder<Answer>()
+                .setQuery(query, Answer.class)
+                .setLifecycleOwner(this)
+                .build();
+    }
+
+
+    private void showAnswerFragment() {
+        isShowingAnswerDialog = true;
+        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+
+        alert.setMessage("Inscris ta réponse");
+        alert.setTitle("Répondre");
+
+        final EditText edittext = new EditText(getContext());
+
+        edittext.setText(mAnswerText);
+
+        edittext.addTextChangedListener(
+                new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        mAnswerText = s.toString();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                }
+        );
+
+        alert.setView(edittext);
+
+        alert.setPositiveButton("Répondre", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String explanation = edittext.getText().toString();
+
+                saveAnswer(explanation);
+
+                isShowingAnswerDialog = false;
+            }
+        });
+
+        alert.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                mAnswerText = "";
+                isShowingAnswerDialog = false;
+            }
+        });
+
+        alert.show();
+    }
+
+    private void saveAnswer(String explanation){
+        Answer answer = new Answer();
+
+        answer.generateId();
+        answer.setWeight(0);
+        answer.setAuthorReference(User.getCurrentUser().getId());
+        answer.setExplanation(explanation);
+        answer.setQuestionReference(mQuestion.getId());
+
+        AnswerHelper.saveState(answer);
+    }
+
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+    public void onDataChanged() {
+        mNotificationText.setText(getString(R.string.no_answer));
+        mNotificationText.setVisibility(mQuestionListAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+        mProgressBar.setVisibility(View.INVISIBLE);
+        mQuestionListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(mListenerRegistration != null){
+            mListenerRegistration.remove();
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        if (mQuestionListAdapter != null) {
+            mQuestionListAdapter.stopListening();
+        }
     }
 }

@@ -9,15 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
+import click.acme.genius.Helpers.UserHelper;
+import click.acme.genius.Models.Question;
+import click.acme.genius.Models.User;
 import click.acme.genius.R;
+import click.acme.genius.Utils.Exceptions.NotImplementedException;
+import click.acme.genius.Utils.UserUpdateOperation;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -37,6 +42,9 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
     Button mSendDataBtn;
 
     @NotEmpty
+    @BindView(R.id.activity_ask_help_title_edittext)
+    EditText mTitleEditText;
+    @NotEmpty
     @BindView(R.id.activity_ask_help_reference_edittext)
     EditText mReferenceEditText;
     @NotEmpty
@@ -48,8 +56,9 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
     @NotEmpty
     @BindView(R.id.activity_ask_help_instruction_edittext)
     EditText mInstructionEditText;
-    private Validator validator;
 
+    private Validator validator;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected int getFragmentLayout() {
@@ -60,11 +69,7 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
     protected void postCreateTreatment() {
         configureFormValidator();
         configureMatiereSpinner();
-    }
-
-    private void configureFormValidator() {
-        validator = new Validator(this);
-        validator.setValidationListener(this);
+        initDatabase();
     }
 
     @Override
@@ -76,29 +81,13 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
     @AfterPermissionGranted(RC_CAMERA_PERMS)
     @OnClick(R.id.activity_ask_help_reference_scan_btn)
-    void OnClickReferenceScanBtn(View view) {
+    void OnClickReferenceScanBtn() {
         showScanActivity();
     }
 
     @OnClick(R.id.activity_ask_envoyer_btn)
     void OnClickSendDataBtn(View view) {
         validator.validate();
-    }
-
-    private void showScanActivity() {
-        if (!EasyPermissions.hasPermissions(this, PERMS)) {
-            EasyPermissions.requestPermissions(this, getString(R.string.popup_title_permission_camera_access), RC_CAMERA_PERMS, PERMS);
-            return;
-        }
-        Intent intent = new Intent(AskUsActivity.this, ScanActivity.class);
-        startActivityForResult(intent, RC_CAMERA_TAKEN);
-    }
-
-    private void configureMatiereSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.subject_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSubjectSpinner.setAdapter(adapter);
     }
 
     @Override
@@ -109,7 +98,7 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        mSubjectSelected = mSubjectSpinner.getSelectedItem().toString();
     }
 
     @Override
@@ -125,6 +114,23 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
     @Override
     public void onValidationSucceeded() {
         Toast.makeText(this, "SHAZAM!", Toast.LENGTH_SHORT).show();
+
+        saveQuestionToDatabase();
+    }
+
+    private void saveQuestionToDatabase() {
+        Question question = getQuestionFromForm();
+
+        CollectionReference questions = mFirestore.collection("questions");
+
+        questions.document(question.getId()).set(question);
+
+        try {
+            UserHelper.updateUserProfile(User.getCurrentUser(), UserUpdateOperation.IncrementAskedQuestions);
+        } catch (NotImplementedException e) {
+            e.printStackTrace();
+        }
+        finish();
     }
 
     @Override
@@ -139,5 +145,48 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private void configureFormValidator() {
+        validator = new Validator(this);
+        validator.setValidationListener(this);
+    }
+
+    private void showScanActivity() {
+        if (!EasyPermissions.hasPermissions(this, PERMS)) {
+            EasyPermissions.requestPermissions(this, getString(R.string.popup_title_permission_camera_access), RC_CAMERA_PERMS, PERMS);
+            return;
+        }
+
+        Intent intent = new Intent(AskUsActivity.this, ScanActivity.class);
+        startActivityForResult(intent, RC_CAMERA_TAKEN);
+    }
+
+    private void configureMatiereSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.subject_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        mSubjectSpinner.setAdapter(adapter);
+        mSubjectSelected = mSubjectSpinner.getSelectedItem().toString();
+    }
+
+    private void initDatabase() {
+        mFirestore = FirebaseFirestore.getInstance();
+    }
+
+    private Question getQuestionFromForm(){
+        Question question = new Question();
+
+        question.generateId();
+        question.setAuthorReference(User.getCurrentUser().getId());
+        question.setTitle(mTitleEditText.getText().toString());
+        question.setInstruction(mInstructionEditText.getText().toString());
+        question.setSubject(mSubjectSelected);
+        question.setPage(mPageEditText.getText().toString());
+        question.setNumber(mNumberEditText.getText().toString());
+        question.setIban(mReferenceEditText.getText().toString());
+
+        return question;
     }
 }
