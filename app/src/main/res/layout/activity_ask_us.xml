@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.Activities.AskUsActivity"
     android:orientation="vertical">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText android:id="@+id/activity_ask_help_title_edittext"
+            android:hint="Titre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,8 +104,9 @@
             android:layout_height="match_parent"
             android:hint="Consigne"
             android:gravity="top"
-            android:inputType="textCapSentences|textAutoCorrect"
-            android:maxLength="1000" />
+            android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
+            android:maxLength="1000"
+            android:ems="10" />
     </LinearLayout>
 
     <LinearLayout
