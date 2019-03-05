@@ -10,6 +10,7 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
+
     <!-- STYLE SIGN-IN ACTIVITY -->
     <style name="LoginTheme" parent="AppTheme">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -36,4 +37,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SpinnerTheme">
+        <item name="android:background">@drawable/bg_spinner</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:color">@color/colorPrimary</item>
+    </style>
 </resources>

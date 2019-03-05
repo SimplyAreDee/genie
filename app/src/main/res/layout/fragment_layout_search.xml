@@ -1,27 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:algolia="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fragments.SearchFragment">
+    tools:context=".Controllers.Fragments.SearchFragment"
+    android:background="@color/colorPrimary">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-    <LinearLayout
-        android:id="@+id/activity_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <com.algolia.instantsearch.ui.views.Hits
-            android:id="@+id/hits"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_layout_search_textinputlayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorText"
+        android:layout_marginTop="20sp"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_layout_search_edittext"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            algolia:itemLayout="@layout/fragment_layout_list_item"/>
+            android:hint="@string/text_to_find" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-</FrameLayout>
+    <TextView
+        android:id="@+id/fragment_layout_search_textview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
+        android:text="@string/subject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textinputlayout" />
+
+    <Spinner
+        android:id="@+id/fragment_layout_search_spinner"
+        android:layout_width="0dp"
+        android:layout_height="40sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:entries="@array/subject_array"
+        android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textview1" />
+
+    <TextView
+        android:paddingTop="16sp"
+        android:id="@+id/fragment_layout_search_textview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/scholarclass"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_spinner" />
+
+    <Spinner
+        android:id="@+id/fragment_layout_search_spinner2"
+        android:layout_width="0dp"
+        android:layout_height="40sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/scholarclass_array"
+        android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textview2" />
+
+    <TextView
+        android:paddingTop="16sp"
+        android:id="@+id/fragment_layout_search_textview3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/interval"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_spinner2" />
+
+    <Spinner
+        android:id="@+id/fragment_layout_search_spinner3"
+        android:entries="@array/periode_array"
+        android:layout_width="0dp"
+        android:layout_height="40sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textview3" />
+
+    <Switch
+        android:id="@+id/fragment_layout_search_switch2"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"
+        android:text="@string/niveau_max"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_spinner3" />
+
+    <Switch
+        android:id="@+id/fragment_layout_search_switch3"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"
+        android:text="@string/with_answer"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_switch2" />
+
+    <Switch
+        android:id="@+id/fragment_layout_search_switch4"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"
+        android:text="@string/with_certified_answer"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_switch3" />
+
+    <Switch
+        android:id="@+id/fragment_layout_search_switch5"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"
+        android:text="@string/without_answer"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_switch4" />
+
+    <ImageButton
+        android:id="@+id/fragment_layout_search_validate"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_circular"
+        android:src="@drawable/ic_search_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_switch5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

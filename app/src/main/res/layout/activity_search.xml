@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Activities.SearchActivity">
+    tools:context=".Controllers.Activities.SearchActivity"
+    android:background="@color/colorPrimary">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/activity_search_frame_layout"

@@ -15,6 +15,6 @@
     <TextView android:id="@+id/toast_layout_root_text"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:textColor="#FFF"
+        android:textColor="@color/colorText"
         />
 </LinearLayout>

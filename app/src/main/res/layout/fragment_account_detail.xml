@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controllers.Fragments.AccountDetailFragment"
+    android:background="@color/colorPrimary">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_account_detail_coordinatorLayout">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="5dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="75dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/fragment_account_detail_profilAvatar_imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/fragment_account_detail_pseudonym_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:hint="@string/pseudonym"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+        <TextView
+            android:id="@+id/fragment_account_detail_firstname_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:hint="@string/firstname"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_account_detail_pseudonym_edittext" />
+
+        <TextView
+            android:id="@+id/fragment_account_detail_lastname_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:hint="@string/lastname"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_account_detail_firstname_edittext" />
+
+        <TextView
+            android:id="@+id/fragment_account_detail_address_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:hint="@string/address"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_account_detail_lastname_edittext" />
+
+        <TextView
+            android:id="@+id/fragment_account_detail_scholarClass_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:hint="@string/scholarclass"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_3quart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_account_detail_address_edittext" />
+
+        <TextView
+            android:id="@+id/fragment_account_detail_establishment_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:hint="@string/establishment"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_3quart"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_account_detail_address_edittext" />
+
+        <Button
+            android:id="@+id/fragment_account_detail_askedCount_edittext"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/fui_transparent"
+            android:drawableEnd="@drawable/outline_ask_white_18dp"
+            android:paddingEnd="10dp"
+            android:text="@string/zero_value"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/fragment_account_detail_answerCount_edittext"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/fui_transparent"
+            android:drawableEnd="@drawable/outline_message_white_18dp"
+            android:paddingEnd="10dp"
+            android:text="@string/zero_value"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_account_detail_pseudonym_edittext"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_3quart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

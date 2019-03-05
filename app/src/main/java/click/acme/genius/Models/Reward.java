@@ -1,11 +1,12 @@
 package click.acme.genius.Models;
 
-public class Badge {
+public class Reward {
     private int mId;
     private String mLabel;
+    private String mDescription;
     private int mRessourceId;
 
-    public Badge(){}
+    public Reward(){}
 
     public int getId() {
         return mId;
@@ -21,6 +22,14 @@ public class Badge {
 
     public void setLabel(String label) {
         mLabel = label;
+    }
+    
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
     }
 
     public int getRessourceId() {

@@ -1,8 +1,7 @@
 package click.acme.genius.Views;
 
-import android.media.Image;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -13,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import click.acme.genius.Helpers.AnswerHelper;
 import click.acme.genius.Helpers.UserHelper;
 import click.acme.genius.Models.Answer;
-import click.acme.genius.Models.Question;
 import click.acme.genius.R;
 
 public class QuestionDetailtemViewHolder extends RecyclerView.ViewHolder {
@@ -29,10 +28,10 @@ public class QuestionDetailtemViewHolder extends RecyclerView.ViewHolder {
     TextView mItemEntryDateTextview;
     @BindView(R.id.fragment_layout_answer_item_questionVote_textview)
     TextView mQuestionVote;
-    @BindView(R.id.fragment_layout_answer_item_certifiedAnswer_imageview)
-    ImageView mPlusOneButton;
-    @BindView(R.id.fragment_layout_answer_item_communityAnswer_imagevie)
-    ImageView mMinorOneButton;
+    @BindView(R.id.fragment_layout_answer_item_major_imageview)
+    Button mPlusOneButton;
+    @BindView(R.id.fragment_layout_answer_item_minor_imagevie)
+    Button mMinorOneButton;
 
     Answer mAnswer;
 
@@ -40,19 +39,20 @@ public class QuestionDetailtemViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         ButterKnife.bind(this, itemView);
+    }
 
-        mPlusOneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AnswerHelper.addCreditToAnswer(mAnswer);
-            }
-        });
-        mMinorOneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AnswerHelper.addDiscreditToAnswer(mAnswer);
-            }
-        });
+    @OnClick(R.id.fragment_layout_answer_item_major_imageview)
+    public void onClickPlusOneButton(View v) {
+        if(mAnswer != null) {
+            AnswerHelper.addCreditToAnswer(mAnswer);
+        }
+    }
+
+    @OnClick(R.id.fragment_layout_answer_item_minor_imagevie)
+    public void onClickMinorOneButton(View v) {
+        if(mAnswer != null) {
+            AnswerHelper.addDiscreditToAnswer(mAnswer);
+        }
     }
 
     public void updateWithData(Answer answer) {

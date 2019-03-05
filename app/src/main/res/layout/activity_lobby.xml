@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Activities.LobbyActivity">
+    tools:context=".Controllers.Activities.LobbyActivity"
+    android:background="@color/colorPrimary">
 
     <WebView
         android:id="@+id/activity_lobby_webview"

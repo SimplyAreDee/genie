@@ -3,10 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fragments.AnswerFragment">
+    tools:context=".Controllers.Fragments.AnswerFragment"
+    android:background="@color/colorPrimary">
     <MultiAutoCompleteTextView
         android:id="@+id/fragment_layout_answer_textview"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:hint="@string/write_answer" />
+        android:hint="@string/write_answer"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimary"
+        android:background="@android:color/white"/>
 </FrameLayout>

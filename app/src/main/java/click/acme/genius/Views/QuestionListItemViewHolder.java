@@ -17,8 +17,6 @@ public class QuestionListItemViewHolder extends RecyclerView.ViewHolder {
     TextView mItemEntryTitle;
     @BindView(R.id.fragment_layout_list_item_subject_textview)
     TextView mItemEntrySubject;
-    @BindView(R.id.fragment_layout_list_item_reference_textview)
-    TextView mItemEntryReference;
     @BindView(R.id.fragment_layout_list_item_date_textview)
     TextView mItemEntryDate;
     @BindView(R.id.fragment_layout_list_item_questionVote)
@@ -35,7 +33,6 @@ public class QuestionListItemViewHolder extends RecyclerView.ViewHolder {
     public void updateWithData(Question question) {
         mItemEntryTitle.setText(question.getTitle());
         mItemEntrySubject.setText(question.getSubject());
-        mItemEntryReference.setText(question.getIban());
         mItemEntryDate.setText(getStringValueOfElapsedTimeSince(question.getDateCreated()));
         mQuestionVote.setText(String.valueOf( question.getWeight() ));
         AnswerHelper.getAnswersFromDatabase(question.getId()).get().addOnSuccessListener(

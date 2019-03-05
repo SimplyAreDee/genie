@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Genius</string>
-    <string name="apporter_de_l_aide">Apporter de l\'aide</string>
-    <string name="trouver_de_l_aide">Trouver de l\'aide</string>
-    <string name="discuter">Discuter avec la communauté</string>
-    <string name="mon_profil">Mon profil</string>
-    <string name="genius">Genius</string>
+    <string name="apporter_de_l_aide">Répondre</string>
+    <string name="trouver_de_l_aide">Demander</string>
+    <string name="discuter">Discuter</string>
+    <string name="mon_profil">Profil</string>
+    <string name="genius">GENIUS</string>
     <string name="slogan">SHAZAM! tes devoirs</string>
     <string name="no_conn_error">Cette application a besoin d\'une connexion internet pour fonctionner</string>
     <string name="retry">Réessayer</string>
@@ -16,6 +16,7 @@
     <string name="connection_succeed">Authentification réussie !</string>
     <string name="connexion">connexion</string>
     <string-array name="subject_array">
+        <item>Toutes</item>
         <item>Français</item>
         <item>Mathématiques</item>
         <item>Anglais</item>
@@ -27,10 +28,33 @@
         <item>Education Musicale</item>
         <item>Arts Plastiques</item>
         <item>E.P.S</item>
+        <item>Informatique</item>
         <item>Italien</item>
         <item>Espagnol</item>
         <item>Philosophie</item>
         <item>Autres langues</item>
+        <item>Autres matières</item>
+    </string-array>
+    <string-array name="scholarclass_array">
+        <item>6éme</item>
+        <item>5éme</item>
+        <item>4éme</item>
+        <item>3éme</item>
+        <item>2nde</item>
+        <item>1ère</item>
+        <item>Terminal</item>
+        <item>Prepa 1</item>
+        <item>Prepa 2</item>
+        <item>Prepa 3</item>
+        <item>Licence</item>
+        <item>Master</item>
+        <item>Autres</item>
+    </string-array>
+    <string-array name="periode_array">
+        <item>Aujourd\'hui</item>
+        <item>Depuis 2 jours</item>
+        <item>Depuis 1 semaine</item>
+        <item>Ce mois-ci</item>
     </string-array>
     <string name="title_activity_scan">ScanActivity</string>
     <string name="popup_title_permission_camera_access">Pour pouvoir scanner le code barre, il faut autorisé l\'accès à l\'appareil photo.</string>
@@ -53,4 +77,16 @@
     <string name="accountStatus">Type de compte</string>
     <string name="zero_value">0</string>
     <string name="freemium">gratuit</string>
+    <string name="filter_1">filter_1</string>
+    <string name="filter_2">filter_2</string>
+    <string name="filter">filter</string>
+    <string name="niveau_max">Afficher les questions d\'un niveau inférieur</string>
+    <string name="with_answer">Seulement les questions avec réponses</string>
+    <string name="with_certified_answer">Seulement avec des réponses certifiées</string>
+    <string name="without_answer">Seulement les questions sans réponses</string>
+    <string name="subject">matière</string>
+    <string name="text_to_find">texte à rechercher</string>
+    <string name="attach_picture">joindre une photo</string>
+    <string name="author">auteur</string>
+    <string name="interval">intervalle</string>
 </resources>

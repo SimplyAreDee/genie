@@ -1,121 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_layout_list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimaryDark"
     android:layout_marginBottom="10dp"
-    android:orientation="vertical"
-    android:id="@+id/fragment_layout_list_item">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="80">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:minHeight="100dp">
-        <LinearLayout android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/fragment_layout_list_item_questionVote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="50sp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="0"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
-            <ImageView
-                android:id="@+id/fragment_layout_list_item_certifiedAnswer_imageview"
-                android:src="@drawable/outline_expand_less_white_18dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/fragment_layout_list_item_answerVote_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="50sp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="20sp"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"/>
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/fragment_layout_list_item_communityAnswer_imagevie"
-                android:src="@drawable/outline_school_white_18dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"/>
-        </LinearLayout>
-    </LinearLayout>
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorAccent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fragment_layout_list_item_title_textview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textAlignment="textStart"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="Titre"
-            android:textSize="18sp"
-            android:textColor="@android:color/holo_blue_dark"/>
+            android:id="@+id/fragment_layout_list_item_answerVote_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:minWidth="50sp"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="19dp" />
+
+        <ImageView
+            android:id="@+id/fragment_layout_list_item_majorvote_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/outline_thumbs_up_down_white_18dp"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_layout_list_item_title_textview" />
+
     </LinearLayout>
-</LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorBlue"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout5"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/fragment_layout_list_item_questionVote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:minWidth="50sp"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="203dp"
+            tools:layout_editor_absoluteY="19dp" />
+
+        <ImageView
+            android:id="@+id/fragment_layout_list_item_view_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/outline_ask_white_18dp"
+            tools:layout_editor_absoluteX="310dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorAccentComp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout6"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/fragment_layout_list_item_questionView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:minWidth="50sp"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="203dp"
+            tools:layout_editor_absoluteY="19dp" />
+
+        <ImageView
+            android:id="@+id/fragment_layout_list_item_minorvote_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/outline_visibility_white_18dp"
+            tools:layout_editor_absoluteX="310dp"
+            tools:layout_editor_absoluteY="8dp" />
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/fragment_layout_list_item_scholarClass_textview"
+        android:id="@+id/fragment_layout_list_item_title_textview"
         android:layout_width="0dp"
-        android:layout_weight="15"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="Classe"
-        android:textColor="@android:color/white"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Titre"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout7"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fragment_layout_list_item_subject_textview"
-        android:text="sujet"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="15"
-        android:textColor="@android:color/white"/>
+        android:text="sujet"
+        android:textColor="@color/colorText"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout7"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_list_item_title_textview" />
 
     <TextView
-        android:id="@+id/fragment_layout_list_item_reference_textview"
-        android:text="reference"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="30"
-        android:textColor="@android:color/white"/>
+        android:id="@+id/fragment_layout_list_item_scholarClass_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:text="Classe"
+        android:textColor="@color/colorText"
+        app:layout_constraintStart_toEndOf="@+id/fragment_layout_list_item_subject_textview"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_list_item_title_textview" />
 
     <TextView
         android:id="@+id/fragment_layout_list_item_date_textview"
-        android:text="date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
         android:layout_weight="15"
+        android:text="date"
         android:textAlignment="textEnd"
-        android:textColor="@android:color/white"/>
-</LinearLayout>
-</LinearLayout>
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_layout_list_item_scholarClass_textview"
+        app:layout_constraintTop_toTopOf="@+id/fragment_layout_list_item_scholarClass_textview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

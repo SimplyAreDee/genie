@@ -13,6 +13,7 @@ public class Answer {
     private String mQuestionReference;
     private String mExplanation;
     private int mWeight;
+    private boolean mCertified;
     private List<String> mRevisionReferences;
     private Timestamp mDateCreated;
 
@@ -84,5 +85,13 @@ public class Answer {
 
     public void setDateCreated(Timestamp dateCreated) {
         mDateCreated = dateCreated;
+    }
+
+    public boolean isCertified() {
+        return mCertified;
+    }
+
+    public void setCertified(boolean certified) {
+        mCertified = certified;
     }
 }

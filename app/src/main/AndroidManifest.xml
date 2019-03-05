@@ -23,33 +23,32 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Controllers.Activities.AccountActivity"
-            android:label="@string/title_activity_account"
-            android:theme="@style/SplashTheme"/>
+            android:label="@string/title_activity_account"/>
         <activity android:name=".Controllers.Activities.QuestionDetailActivity" />
         <activity android:name=".Controllers.Activities.LobbyActivity" />
-        <activity
-            android:name=".Controllers.Activities.SearchActivity"
-            android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".Controllers.Activities.ListActivity"
-            android:theme="@style/SplashTheme" />
+        <activity android:name=".Controllers.Activities.SearchActivity"/>
+        <activity android:name=".Controllers.Activities.ListActivity"/>
         <activity
             android:name=".Controllers.Activities.ScanActivity"
             android:label="@string/title_activity_scan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Controllers.Activities.AskUsActivity"
-            android:theme="@style/SplashTheme" />
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".Controllers.Activities.BootstrapActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controllers.Activities.MainActivity" />
+        <activity
+            android:name=".Controllers.Activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
     </application>
 
 </manifest>

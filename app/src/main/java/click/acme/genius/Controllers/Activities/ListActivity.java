@@ -1,5 +1,7 @@
 package click.acme.genius.Controllers.Activities;
 
+import android.content.Intent;
+
 import click.acme.genius.Controllers.Fragments.ListFragment;
 import click.acme.genius.R;
 
@@ -27,5 +29,10 @@ public class ListActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mListFragment.onActivityResult(requestCode, resultCode, data);
     }
 }

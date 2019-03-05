@@ -1,98 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/browser_actions_title_color"
-    android:layout_marginBottom="10dp"
-    android:orientation="vertical"
+    android:background="@color/colorBlue"
     android:id="@+id/fragment_layout_answer_item">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="80">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:minHeight="100dp">
-            <LinearLayout android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/fragment_layout_answer_item_questionVote_textview"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:minWidth="50sp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="0"
-                    android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/white"/>
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/fragment_layout_answer_item_certifiedAnswer_imageview"
-                    android:src="@drawable/outline_expand_less_white_18dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
 
-                <ImageView
-                    android:id="@+id/fragment_layout_answer_item_communityAnswer_imagevie"
-                    android:src="@drawable/outline_expand_more_white_18dp"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/fragment_layout_answer_item_answer_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="textStart"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="Reponse"
-                android:textSize="18sp"
-                android:textColor="@android:color/white"/>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/fragment_layout_answer_item_author_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/author"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:gravity="right|top"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_answer_item_author_textview">
+
+        <Button
+            android:id="@+id/fragment_layout_answer_item_major_imageview"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:background="@drawable/button_circular"
+            android:drawableStart="@drawable/outline_thumb_up_white_18dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
         <TextView
-            android:id="@+id/fragment_layout_answer_item_author_textview"
+            android:id="@+id/fragment_layout_answer_item_questionVote_textview"
             android:layout_width="0dp"
-            android:layout_weight="80"
-            android:layout_height="match_parent"
-            android:textAlignment="textStart"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="auteur"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"/>
-        <TextView
-            android:id="@+id/fragment_layout_answer_item_date_textview"
-            android:layout_width="0dp"
-            android:layout_weight="20"
-            android:layout_height="match_parent"
-            android:textAlignment="textEnd"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="date"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:minWidth="50sp"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/fragment_layout_answer_item_minor_imagevie"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_circular"
+            android:drawableStart="@drawable/outline_thumb_down_white_18dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
     </LinearLayout>
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/fragment_layout_answer_item_answer_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Reponse"
+        android:textAlignment="textStart"
+        android:background="@android:color/white"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <TextView
+        android:id="@+id/fragment_layout_answer_item_date_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="20"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="date"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_answer_item_author_textview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

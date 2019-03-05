@@ -12,15 +12,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
-import butterknife.BindView;
 import butterknife.OnClick;
 import click.acme.genius.Helpers.UserHelper;
 import click.acme.genius.Models.User;
 import click.acme.genius.R;
 
 public class MainActivity extends BaseActivity {
-
-    @BindView(R.id.main_activity_ask_help_btn) Button mAskHelpBtn;
 
     @Override
     protected int getFragmentLayout() {
@@ -59,25 +56,25 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.main_activity_ask_help_btn)
-    void OnClickAskHelpButton(View view){
+    void OnClickAskHelpButton(){
         Intent intent = new Intent(MainActivity.this, AskUsActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.main_activity_give_help_btn)
-    void OnClickGiveHelpButton(View view) {
+    void OnClickGiveHelpButton() {
         Intent intent = new Intent(MainActivity.this, ListActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.main_activity_discuss_btn)
-    void OnClickDiscussButton(View view) {
-        Intent intent = new Intent(MainActivity.this, LobbyActivity.class);
+    void OnClickDiscussButton() {
+        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.main_activity_profile_btn)
-    void OnClickAccountButton(View view) {
+    @OnClick(R.id.main_activity_profil_imageView)
+    void OnClickAccountButton() {
         Intent intent = new Intent(MainActivity.this, AccountActivity.class);
         startActivity(intent);
     }

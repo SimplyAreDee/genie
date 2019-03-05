@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.firebase.firestore.CollectionReference;
@@ -17,12 +18,9 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
-import click.acme.genius.Helpers.UserHelper;
 import click.acme.genius.Models.Question;
 import click.acme.genius.Models.User;
 import click.acme.genius.R;
-import click.acme.genius.Utils.Exceptions.NotImplementedException;
-import click.acme.genius.Utils.UserUpdateOperation;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -32,10 +30,10 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
     private static final String PERMS = Manifest.permission.CAMERA;
     private static final int RC_CAMERA_PERMS = 100;
-    private static final int RC_CAMERA_TAKEN = 200;
+    private static final int RC_CAMERA_IBAN_TAKEN = 200;
 
     @BindView(R.id.activity_ask_help_reference_scan_btn)
-    Button mReferenceScanBtn;
+    ImageButton mReferenceScanBtn;
     @BindView(R.id.activity_ask_help_subject_spinner)
     Spinner mSubjectSpinner;
     @BindView(R.id.activity_ask_envoyer_btn)
@@ -44,13 +42,13 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
     @NotEmpty
     @BindView(R.id.activity_ask_help_title_edittext)
     EditText mTitleEditText;
-    @NotEmpty
+
     @BindView(R.id.activity_ask_help_reference_edittext)
     EditText mReferenceEditText;
-    @NotEmpty
+
     @BindView(R.id.activity_ask_help_page_edittext)
     EditText mPageEditText;
-    @NotEmpty
+
     @BindView(R.id.activity_ask_help_number_edittext)
     EditText mNumberEditText;
     @NotEmpty
@@ -103,7 +101,7 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == RC_CAMERA_TAKEN) {
+        if (requestCode == RC_CAMERA_IBAN_TAKEN) {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("barcode");
                 mReferenceEditText.setText(result);
@@ -125,11 +123,6 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
 
         questions.document(question.getId()).set(question);
 
-        try {
-            UserHelper.updateUserProfile(User.getCurrentUser(), UserUpdateOperation.IncrementAskedQuestions);
-        } catch (NotImplementedException e) {
-            e.printStackTrace();
-        }
         finish();
     }
 
@@ -159,7 +152,7 @@ public class AskUsActivity extends BaseActivity implements AdapterView.OnItemSel
         }
 
         Intent intent = new Intent(AskUsActivity.this, ScanActivity.class);
-        startActivityForResult(intent, RC_CAMERA_TAKEN);
+        startActivityForResult(intent, RC_CAMERA_IBAN_TAKEN);
     }
 
     private void configureMatiereSpinner() {

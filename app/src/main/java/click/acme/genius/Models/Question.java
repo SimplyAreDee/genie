@@ -19,6 +19,10 @@ public class Question {
     private String mIban;
     private String mInstruction;
     private int mWeight;
+    private int mMinor;
+    private int mMajor;
+    private boolean certifiedAnswer;
+    private List<String> mAnswerReferences;
     private List<String> mRevisionReferences;
     private Timestamp mDateCreated;
 
@@ -117,10 +121,54 @@ public class Question {
     }
 
     public int getWeight() {
-        return mWeight;
+        return mMajor - mMinor;
     }
 
     public void setWeight(int weight) {
         mWeight = weight;
+    }
+
+    public int getMinor() {
+        return mMinor;
+    }
+
+    public void setMinor(int minor) {
+        mMinor = minor;
+    }
+
+    public int getMajor() {
+        return mMajor;
+    }
+
+    public void setMajor(int major) {
+        mMajor = major;
+    }
+
+    public void updateWeight() {
+        setWeight( getWeight() );
+    }
+
+    public List<String> getAnswerReferences() {
+        return mAnswerReferences;
+    }
+
+    public void setAnswerReferences(List<String> mAnswerReferences) {
+        this.mAnswerReferences = mAnswerReferences;
+    }
+
+    public void addAnswerReference(String reference){
+        if(mAnswerReferences == null){
+            mAnswerReferences = new ArrayList<String>();
+        }
+
+        mAnswerReferences.add(reference);
+    }
+
+    public boolean isCertifiedAnswer() {
+        return certifiedAnswer;
+    }
+
+    public void setCertifiedAnswer(boolean certifiedAnswer) {
+        this.certifiedAnswer = certifiedAnswer;
     }
 }

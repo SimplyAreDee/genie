@@ -15,7 +15,7 @@ public class User {
     private String mUserFirstName;
     private String mUserLastName;
     private String mEmailAddress;
-    private String mClass;
+    private int mScholarLevel;
     private String mEstablishment;
     private int mAskedCount;
     private int mAnsweredCount;
@@ -90,12 +90,12 @@ public class User {
         mEmailAddress = emailAdress;
     }
 
-    public String getScholarClass() {
-        return mClass;
+    public int getScholarLevel() {
+        return mScholarLevel;
     }
 
-    public void setScholarClass(String aClass) {
-        mClass = aClass;
+    public void setScholarLevel(int aClass) {
+        mScholarLevel = aClass;
     }
 
     public String getEstablishment() {

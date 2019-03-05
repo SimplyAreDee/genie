@@ -5,8 +5,8 @@ import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -14,15 +14,11 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.MetadataChanges;
 import com.google.firebase.firestore.Query;
 
 import java.util.Locale;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,22 +53,24 @@ public class QuestionDetailFragment extends BaseFragment implements QuestionDeta
     @BindView(R.id.fragment_layout_question_detail_action_button)
     FloatingActionButton mActionButton;
     //Included question item layout
-    @BindView(R.id.fragment_layout_list_item_title_textview)
+    @BindView(R.id.fragment_layout_question_item_title_textview)
     TextView mItemEntryTitle;
-    @BindView(R.id.fragment_layout_list_item_subject_textview)
+    @BindView(R.id.fragment_layout_question_item_instruction_textview)
+    TextView mItemEntryInstruction;
+    @BindView(R.id.fragment_layout_question_item_subject_textview)
     TextView mItemEntrySubject;
-    @BindView(R.id.fragment_layout_list_item_reference_textview)
+    @BindView(R.id.fragment_layout_question_item_reference_textview)
     TextView mItemEntryReference;
-    @BindView(R.id.fragment_layout_list_item_date_textview)
+    @BindView(R.id.fragment_layout_question_item_date_textview)
     TextView mItemEntryDate;
-    @BindView(R.id.fragment_layout_list_item_certifiedAnswer_imageview)
-    ImageView mPlusOneButton;
-    @BindView(R.id.fragment_layout_list_item_communityAnswer_imagevie)
-    ImageView mMinorOneButton;
-    @BindView(R.id.fragment_layout_list_item_questionVote)
-    TextView mQuestionVote;
-    @BindView(R.id.fragment_layout_list_item_answerVote_textview)
-    TextView mAnswerVote;
+    @BindView(R.id.fragment_layout_question_item_majorvote_button)
+    Button mPlusOneButton;
+    @BindView(R.id.fragment_layout_question_item_minorvote_button)
+    Button mMinorOneButton;
+    @BindView(R.id.fragment_layout_question_item_questionVote)
+    TextView mMajorVote;
+    @BindView(R.id.fragment_layout_question_item_answerVote_textview)
+    TextView mMinorVote;
     
     public QuestionDetailFragment() {
         // Required empty public constructor
@@ -90,35 +88,25 @@ public class QuestionDetailFragment extends BaseFragment implements QuestionDeta
 
     @Override
     protected void configureDesign() {
-        //Changement pour downvote
-        mMinorOneButton.setImageResource(R.drawable.outline_expand_more_white_18dp);
-
         mProgressBar.setVisibility(View.VISIBLE);
 
         String mQuestionReference = getArguments().getString("questionReference");
 
         getAndDisplayRelatedQuestion(mQuestionReference);
-
-        addClickEventOnImageView();
     }
 
-    private void addClickEventOnImageView() {
-        mPlusOneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mQuestion != null) {
-                    QuestionHelper.addCreditToQuestion(mQuestion);
-                }
-            }
-        });
-        mMinorOneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mQuestion != null) {
-                    QuestionHelper.addDiscreditToQuestion(mQuestion);
-                }
-            }
-        });
+    @OnClick(R.id.fragment_layout_question_item_majorvote_button)
+    public void onClickPlusOneButton(View v) {
+        if(mQuestion != null) {
+            QuestionHelper.addCreditToQuestion(mQuestion);
+        }
+    }
+
+    @OnClick(R.id.fragment_layout_question_item_minorvote_button)
+    public void onClickMinorOneButton(View v) {
+        if(mQuestion != null) {
+            QuestionHelper.addDiscreditToQuestion(mQuestion);
+        }
     }
 
     @Override
@@ -168,10 +156,9 @@ public class QuestionDetailFragment extends BaseFragment implements QuestionDeta
             mItemEntrySubject.setText(question.getSubject());
             mItemEntryReference.setText(question.getIban());
             mItemEntryDate.setText(QuestionListItemViewHolder.getStringValueOfElapsedTimeSince(question.getDateCreated()));
-            mQuestionVote.setText(String.valueOf( question.getWeight() ));
-            AnswerHelper.getAnswersFromDatabase(question.getId()).get().addOnSuccessListener(
-                    queryDocumentSnapshots -> mAnswerVote.setText(String.valueOf( queryDocumentSnapshots.size() ))
-            );
+            mMajorVote.setText(String.valueOf( question.getMajor() ));
+            mMinorVote.setText(String.valueOf( question.getMinor() ));
+            mItemEntryInstruction.setText(question.getInstruction());
         }
     }
 
