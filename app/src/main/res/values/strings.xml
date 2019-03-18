@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">Genius</string>
+    <string name="apporter_de_l_aide">Répondre</string>
+    <string name="trouver_de_l_aide">Demander</string>
+    <string name="discuter">Discuter</string>
+    <string name="mon_profil">Profil</string>
+    <string name="genius">GENIUS</string>
+    <string name="slogan">SHAZAM! tes devoirs</string>
+    <string name="no_conn_error">Cette application a besoin d\'une connexion internet pour fonctionner</string>
+    <string name="retry">Réessayer</string>
+    //Bootstrap
+    <string name="error_not_connected">Vous devez vous connecter !</string>
+    <string name="error_authentication_canceled">Authentification annulée&#8230;</string>
+    <string name="error_no_internet">Aucune connexion internet !</string>
+    <string name="error_unknown_error">Une erreur inconnue s\'est produite&#8230;</string>
+    <string name="connection_succeed">Authentification réussie !</string>
+    <string name="connexion">connexion</string>
+    <string-array name="subject_array">
+        <item>Toutes</item>
+        <item>Français</item>
+        <item>Mathématiques</item>
+        <item>Anglais</item>
+        <item>Histoire</item>
+        <item>Géographie</item>
+        <item>Education Civique</item>
+        <item>S.V.T</item>
+        <item>Technologie</item>
+        <item>Education Musicale</item>
+        <item>Arts Plastiques</item>
+        <item>E.P.S</item>
+        <item>Informatique</item>
+        <item>Italien</item>
+        <item>Espagnol</item>
+        <item>Philosophie</item>
+        <item>Autres langues</item>
+        <item>Autres matières</item>
+    </string-array>
+    <string-array name="scholarclass_array">
+        <item>6éme</item>
+        <item>5éme</item>
+        <item>4éme</item>
+        <item>3éme</item>
+        <item>2nde</item>
+        <item>1ère</item>
+        <item>Terminal</item>
+        <item>Prepa 1</item>
+        <item>Prepa 2</item>
+        <item>Prepa 3</item>
+        <item>Licence</item>
+        <item>Master</item>
+        <item>Autres</item>
+    </string-array>
+    <string-array name="periode_array">
+        <item>Aujourd\'hui</item>
+        <item>Depuis 2 jours</item>
+        <item>Depuis 1 semaine</item>
+        <item>Ce mois-ci</item>
+    </string-array>
+    <string name="title_activity_scan">ScanActivity</string>
+    <string name="popup_title_permission_camera_access">Pour pouvoir scanner le code barre, il faut autorisé l\'accès à l\'appareil photo.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notification_zone">notification_zone</string>
+    <string name="no_answer">Aucune réponse pour le moment</string>
+    <string name="error_occured">Une erreur vient de se produire</string>
+    <string name="write_answer">Ecris ta réponse</string>
+    <string name="title_activity_account">AccountActivity</string>
+    <string name="pseudonym">pseudonyme</string>
+    <string name="firstname">Prénom</string>
+    <string name="lastname">nom de famille</string>
+    <string name="address">Adresse</string>
+    <string name="scholarclass">Classe</string>
+    <string name="establishment">Etablissement</string>
+    <string name="askedCount">Nombre de question posée</string>
+    <string name="answerCount">Nombre de réponses données</string>
+    <string name="accountStatus">Type de compte</string>
+    <string name="zero_value">0</string>
+    <string name="freemium">gratuit</string>
+    <string name="filter_1">filter_1</string>
+    <string name="filter_2">filter_2</string>
+    <string name="filter">filter</string>
+    <string name="niveau_max">Afficher les questions d\'un niveau inférieur</string>
+    <string name="with_answer">Seulement les questions avec réponses</string>
+    <string name="with_certified_answer">Seulement avec des réponses certifiées</string>
+    <string name="without_answer">Seulement les questions sans réponses</string>
+    <string name="subject">matière</string>
+    <string name="text_to_find">texte à rechercher</string>
+    <string name="attach_picture">joindre une photo</string>
+    <string name="author">auteur</string>
+    <string name="interval">intervalle</string>
+    <string name="comming_soon_search">Bientôt plus d\'option de recherche</string>
+    <string name="title_activity_chat_new_message">ChatNewMessageActivity</string>
+    <string name="type_here">Inscris ton message</string>
+    <string name="send">Envoyer</string>
+    <string name="capture_perm_text">Pour pouvoir prendre une capture il faut autorisé l\'application à accéder à l\'appareil photo</string>
+    <string name="wait_text">Patientez pendant l\'enregistrement. Une fois l\'envoi effectué, une publicité s\'affichera</string>
+    <string name="wait_image">Patientez pendant l\'enregistrement, L\'ajout d\'une image demande plus de temps d\'enregistrement. Une fois l\'envoi effectué, une publicité s\'affichera</string>
+    <string name="ad_load_error">Oups! Petite erreur avec la publicité, c\'est ton jour de change.</string>
+    <string name="filter_by_pseudo">Filtrer par pseudonyme</string>
+    <string name="no_chat">Pas de conversation</string>
+    <string name="no_reward_earn">Aucun badge gagné pour le moment</string>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controllers.activities.ChatActivity"
+    android:background="@color/colorPrimary"
+    android:id="@+id/chat_activity__constraintLayoutContainer">
+    <RelativeLayout
+        android:id="@+id/chat_activity__progressLayout"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <ProgressBar
+            android:layout_width="200dp"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/chat_activity_notification_textview"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        android:layout_margin="@dimen/default_large_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_activity_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/chat_activity_searchview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:id="@+id/chat_activity_searchview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <AutoCompleteTextView
+            android:id="@+id/chat_activity_search_edittext"
+            android:enabled="false"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:hint="Filtrer par utilisateur"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText" />
+
+        <ImageButton
+            android:id="@+id/chat_activity_search_imagebutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/colorAccentComp"
+            android:src="@drawable/ic_search_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/chat_activity_newmessage_imagebutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/colorAccentComp"
+            android:src="@drawable/outline_people_white_18dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

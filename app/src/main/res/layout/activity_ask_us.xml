@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlueLight">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".controllers.activities.QuestionAskActivity"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="20sp"
+                android:padding="10sp"
+                android:background="@android:color/white"
+                android:gravity="center">
+                <EditText android:id="@+id/activity_ask_help_title_edittext"
+                    android:hint="Titre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Matière" />
+                <Spinner
+                    android:id="@+id/activity_ask_help_subject_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="10"
+                    android:gravity="center">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:stretchColumns="1">
+
+                        <EditText
+                            android:id="@+id/activity_ask_help_reference_edittext"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="70"
+                            android:hint="Code barre du livre"
+                            android:inputType="number" />
+                        <ImageButton
+                            android:background="@color/fui_transparent"
+                            android:id="@+id/activity_ask_help_reference_scan_btn"
+                            android:layout_width="30sp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="30"
+                            android:src="@drawable/outline_barcode_black_18dp"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:stretchColumns="1"
+                        android:layout_marginTop="5dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="70"
+                            android:textSize="22sp"
+                            android:text="@string/attach_picture"/>
+                        <ImageButton
+                            android:labelFor="@string/attach_picture"
+                            android:background="@color/fui_transparent"
+                            android:id="@+id/activity_ask_help_reference_capture_btn"
+                            android:layout_width="30sp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="30"
+                            android:src="@drawable/outline_camera_alt_black_18dp"/>
+                    </TableRow>
+                    <TableRow
+                        android:id="@+id/activity_ask_help_preview_imageview_tablerow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:stretchColumns="1"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone">
+                        <ImageView
+                            android:id="@+id/activity_ask_help_preview_imageview"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_gravity="center"
+                            />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20sp"
+                android:padding="10sp"
+                android:background="@android:color/white">
+                <EditText
+                    android:id="@+id/activity_ask_help_page_edittext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:hint="Numero de page"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/activity_ask_help_number_edittext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:hint="Numero d'exercice"
+                    android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="20sp"
+                android:padding="10sp"
+                android:background="@android:color/white">
+                <EditText
+                    android:id="@+id/activity_ask_help_instruction_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Consigne"
+                    android:gravity="top"
+                    android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
+                    android:maxLength="1000"
+                    android:maxLines="4"
+                    android:minHeight="180dp"
+                    android:scrollbars="vertical"
+                    android:ems="10" />
+            </LinearLayout>
+            <ImageButton
+                android:layout_gravity="center"
+                android:background="@drawable/button_circular"
+                android:src="@drawable/outline_reply_white_18dp"
+                android:id="@+id/activity_ask_envoyer_btn"
+                android:layout_width="75dp"
+                android:layout_height="75dp" />
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/activity_chat_detail_progressLayout"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:visibility="visible">
+        <TextView
+            android:id="@+id/activity_chat_detail_info"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+        <ProgressBar
+            android:layout_below="@+id/activity_chat_detail_info"
+            android:layout_width="200dp"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            style="@style/MyProgressBar"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</RelativeLayout>
