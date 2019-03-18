@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:src="@drawable/outline_ask_white_18dp"
+            android:src="@drawable/outline_forum_white_18dp"
             tools:layout_editor_absoluteX="310dp"
             tools:layout_editor_absoluteY="8dp" />
 
@@ -132,7 +132,7 @@
         android:text="Titre"
         android:textAlignment="textStart"
         android:textColor="@color/colorText"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/linearLayout7"
@@ -142,33 +142,27 @@
         android:id="@+id/fragment_layout_list_item_subject_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="15"
         android:text="sujet"
         android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout7"
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_list_item_title_textview" />
 
     <TextView
-        android:id="@+id/fragment_layout_list_item_scholarClass_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="bottom"
-        android:text="Classe"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toEndOf="@+id/fragment_layout_list_item_subject_textview"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_list_item_title_textview" />
-
-    <TextView
         android:id="@+id/fragment_layout_list_item_date_textview"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="15"
         android:text="date"
         android:textAlignment="textEnd"
         android:textColor="@color/colorText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fragment_layout_list_item_scholarClass_textview"
-        app:layout_constraintTop_toTopOf="@+id/fragment_layout_list_item_scholarClass_textview" />
+        app:layout_constraintStart_toEndOf="@+id/linearLayout7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

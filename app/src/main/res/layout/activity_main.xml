@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".Controllers.Activities.MainActivity">
-
+    tools:context=".controllers.activities.MainActivity">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
@@ -217,4 +216,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.75" />
+    <androidx.cardview.widget.CardView
+        android:visibility="gone"
+        android:id="@+id/main_activity_progress_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/colorPrimaryDark">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:paddingTop="20sp"
+            android:layout_gravity="center"
+            android:gravity="center|top"
+            android:text="Recupération des informations en cours..."/>
+        <ProgressBar
+            android:layout_gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/main_activity_secretfeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

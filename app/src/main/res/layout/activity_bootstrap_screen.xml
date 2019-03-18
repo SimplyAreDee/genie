@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Activities.BootstrapActivity">
+    tools:context=".controllers.activities.BootstrapActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,8 +51,8 @@
         android:layout_marginEnd="10sp"
         android:layout_weight="10"
         android:text="@string/connexion"
-        android:textColor="@color/colorText"
-        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/black"
+        android:background="@color/colorAccentComp"
         android:drawableStart="@drawable/outline_chevron_right_white_18dp"
         android:layout_marginBottom="20sp"/>
         <Button
@@ -63,8 +63,8 @@
             android:layout_marginEnd="10sp"
             android:layout_weight="10"
             android:text="@string/retry"
-            android:textColor="@color/colorText"
-            android:background="@color/colorPrimaryDark"
+            android:textColor="@android:color/black"
+            android:background="@color/colorAccentComp"
             android:drawableStart="@drawable/outline_refresh_white_18dp"
             android:layout_marginBottom="20sp"/>
     </LinearLayout>

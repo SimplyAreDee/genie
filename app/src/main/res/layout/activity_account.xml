@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    tools:context=".Controllers.Activities.AccountActivity">
+    tools:context=".controllers.activities.AccountActivity">
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/activity_account_tabs"
         android:layout_width="match_parent"

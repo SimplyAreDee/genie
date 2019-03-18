@@ -47,7 +47,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="15"
-            android:text="sujet"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -55,16 +54,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="30"
-            android:text="reference"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:id="@+id/fragment_layout_question_item_date_textview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="15"
-            android:text="date"
-            android:textAlignment="textEnd"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -72,7 +61,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Classe"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/fragment_layout_question_item_date_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:textAlignment="textEnd"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
@@ -92,7 +88,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -151,11 +147,24 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/fragment_layout_question_item_capture_preview_imagebutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/button_circular"
+        android:drawableStart="@drawable/outline_thumb_down_white_18dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_layout_question_item_instruction_textview"
+        app:layout_constraintEnd_toEndOf="parent" />
     <TextView
         android:id="@+id/fragment_layout_question_item_instruction_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -163,8 +172,118 @@
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_question_item_instruction_textview">
+
+        <androidx.cardview.widget.CardView
+            android:layout_margin="5dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="0dp">
+            <ImageView
+                android:id="@+id/fragment_layout_question_item_user_image"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:scaleType="fitXY" />
+        </androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/fragment_layout_question_item_pseudo"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"/>
+
+            <TextView
+                android:id="@+id/fragment_layout_question_item_totalpoint"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7dp"/>
+
+            <ImageView
+                android:src="@drawable/outline_star_white_18dp"
+                android:id="@+id/fragment_layout_question_item_illupoint"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/fragment_layout_question_item_totalpoint" />
+
+            <TextView
+                android:id="@+id/fragment_layout_question_item_totalbadge"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/fragment_layout_question_item_illupoint"/>
+
+            <ImageView
+                android:id="@+id/fragment_layout_question_item_illubadge"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/fragment_layout_question_item_totalbadge"
+                android:src="@drawable/outline_reward_white_18dp" />
+
+            <ImageView
+                android:id="@+id/fragment_layout_question_item_badge0"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/fragment_layout_question_item_illubadge" />
+
+            <ImageView
+                android:id="@+id/fragment_layout_question_item_badge1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/fragment_layout_question_item_badge0" />
+
+            <ImageView
+                android:id="@+id/fragment_layout_question_item_badge2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/fragment_layout_question_item_badge1" />
+
+            <ImageView
+                android:id="@+id/fragment_layout_question_item_badge3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/fragment_layout_question_item_pseudo"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/fragment_layout_question_item_badge2" />
+        </RelativeLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

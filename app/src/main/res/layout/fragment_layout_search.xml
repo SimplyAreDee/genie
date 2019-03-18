@@ -5,10 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fragments.SearchFragment"
+    tools:context=".controllers.fragments.SearchFragment"
     android:background="@color/colorPrimary">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:visibility="gone"
         android:id="@+id/fragment_layout_search_textinputlayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/fragment_layout_search_textview1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textinputlayout" />
 
     <Spinner
+        android:visibility="gone"
         android:id="@+id/fragment_layout_search_spinner"
         android:layout_width="0dp"
         android:layout_height="40sp"
@@ -58,6 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textview1" />
 
     <TextView
+        android:visibility="gone"
         android:paddingTop="16sp"
         android:id="@+id/fragment_layout_search_textview2"
         android:layout_width="match_parent"
@@ -72,6 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_spinner" />
 
     <Spinner
+        android:visibility="gone"
         android:id="@+id/fragment_layout_search_spinner2"
         android:layout_width="0dp"
         android:layout_height="40sp"
@@ -86,6 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textview2" />
 
     <TextView
+        android:visibility="gone"
         android:paddingTop="16sp"
         android:id="@+id/fragment_layout_search_textview3"
         android:layout_width="match_parent"
@@ -100,6 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_spinner2" />
 
     <Spinner
+        android:visibility="gone"
         android:id="@+id/fragment_layout_search_spinner3"
         android:entries="@array/periode_array"
         android:layout_width="0dp"
@@ -116,6 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_textview3" />
 
     <Switch
+        android:visibility="gone"
         android:id="@+id/fragment_layout_search_switch2"
         android:layout_width="0dp"
         android:layout_height="50sp"
@@ -179,6 +187,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_switch4" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:text="@string/comming_soon_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_layout_search_validate"/>
     <ImageButton
         android:id="@+id/fragment_layout_search_validate"
         android:layout_width="80dp"

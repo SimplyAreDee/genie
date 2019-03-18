@@ -89,4 +89,15 @@
     <string name="attach_picture">joindre une photo</string>
     <string name="author">auteur</string>
     <string name="interval">intervalle</string>
+    <string name="comming_soon_search">Bientôt plus d\'option de recherche</string>
+    <string name="title_activity_chat_new_message">ChatNewMessageActivity</string>
+    <string name="type_here">Inscris ton message</string>
+    <string name="send">Envoyer</string>
+    <string name="capture_perm_text">Pour pouvoir prendre une capture il faut autorisé l\'application à accéder à l\'appareil photo</string>
+    <string name="wait_text">Patientez pendant l\'enregistrement. Une fois l\'envoi effectué, une publicité s\'affichera</string>
+    <string name="wait_image">Patientez pendant l\'enregistrement, L\'ajout d\'une image demande plus de temps d\'enregistrement. Une fois l\'envoi effectué, une publicité s\'affichera</string>
+    <string name="ad_load_error">Oups! Petite erreur avec la publicité, c\'est ton jour de change.</string>
+    <string name="filter_by_pseudo">Filtrer par pseudonyme</string>
+    <string name="no_chat">Pas de conversation</string>
+    <string name="no_reward_earn">Aucun badge gagné pour le moment</string>
 </resources>

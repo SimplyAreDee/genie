@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fragments.AnswerFragment"
+    tools:context=".controllers.fragments.AnswerFragment"
     android:background="@color/colorPrimary">
     <MultiAutoCompleteTextView
         android:id="@+id/fragment_layout_answer_textview"

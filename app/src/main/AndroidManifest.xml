@@ -2,18 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="click.acme.genius">
 
-    <meta-data
-        android:name="com.google.android.gms.vision.DEPENDENCIES"
-        android:value="barcode" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-feature android:name="android.hardware.camera" />
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -21,34 +16,67 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8678425123175797~4620846413" />
+
+        <service
+            android:enabled="true"
+            android:name="services.StepCounterService" />
+
+        <activity android:name=".controllers.activities.ChatDetailActivity" />
+        <activity android:name=".controllers.activities.ChatActivity" />
         <activity
-            android:name=".Controllers.Activities.AccountActivity"
-            android:label="@string/title_activity_account"/>
-        <activity android:name=".Controllers.Activities.QuestionDetailActivity" />
-        <activity android:name=".Controllers.Activities.LobbyActivity" />
-        <activity android:name=".Controllers.Activities.SearchActivity"/>
-        <activity android:name=".Controllers.Activities.ListActivity"/>
+            android:name=".controllers.activities.AccountActivity"
+            android:label="@string/title_activity_account" />
+        <activity android:name=".controllers.activities.QuestionDetailActivity">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="www.acme.click"
+                    android:pathPattern="/genius/questions" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".controllers.activities.SearchActivity" />
+        <activity android:name=".controllers.activities.QuestionListActivity" />
         <activity
-            android:name=".Controllers.Activities.ScanActivity"
+            android:name=".controllers.activities.ScanActivity"
             android:label="@string/title_activity_scan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Controllers.Activities.AskUsActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden"/>
+            android:name=".controllers.activities.QuestionAskActivity"
+            android:configChanges="orientation|keyboardHidden" />
         <activity
-            android:name=".Controllers.Activities.BootstrapActivity"
+            android:name=".controllers.activities.BootstrapActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controllers.Activities.MainActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden"/>
+            android:name=".controllers.activities.MainActivity"
+            android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="www.acme.click"
+                    android:pathPattern="/genius" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

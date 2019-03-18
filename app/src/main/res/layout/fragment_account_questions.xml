@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fragments.AccountQuestionsFragment"
+    tools:context=".controllers.fragments.AccountQuestionsFragment"
     android:background="@color/colorPrimary">
     <TextView
         android:id="@+id/fragment_account_questions_notification_textview"

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fragments.AccountDetailFragment"
+    tools:context=".controllers.fragments.AccountDetailFragment"
     android:background="@color/colorPrimary">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:enabled="false"
-            android:hint="@string/pseudonym"
+
             android:textColor="@color/colorText"
             android:textColorHint="@color/colorText"
             android:textSize="25sp"
@@ -61,7 +61,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:enabled="false"
-            android:hint="@string/firstname"
+
             android:textColor="@color/colorText"
             android:textColorHint="@color/colorText"
             android:textSize="25sp"
@@ -77,7 +77,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:enabled="false"
-            android:hint="@string/lastname"
+
             android:textColor="@color/colorText"
             android:textColorHint="@color/colorText"
             android:textSize="25sp"
@@ -93,7 +93,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:enabled="false"
-            android:hint="@string/address"
+
             android:textColor="@color/colorText"
             android:textColorHint="@color/colorText"
             android:textSize="25sp"
@@ -109,7 +109,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:enabled="false"
-            android:hint="@string/scholarclass"
+
             android:textColor="@color/colorText"
             android:textColorHint="@color/colorText"
             android:textSize="25sp"
@@ -125,7 +125,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:enabled="false"
-            android:hint="@string/establishment"
+
             android:textColor="@color/colorText"
             android:textColorHint="@color/colorText"
             android:textSize="25sp"
@@ -168,5 +168,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.50" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_account_detail_floatingbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/fragment_account_detail_coordinatorLayout"
+            android:layout_alignBottom="@+id/fragment_account_detail_coordinatorLayout"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/outline_edit_white_18dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
